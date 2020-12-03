@@ -1,0 +1,21 @@
+
+.form {
+    display: block;
+    margin: 10px;
+    padding: 10px;
+    font-family: sans-serif;
+}
+
+#form {
+    font-weight: bold;
+    font-family: sans-serif;
+}
+
+#form> form> button {
+    margin: 10px;
+    box-shadow: 0 2px 2px 0 black;
+}
+
+#endnav {
+    margin: 10px;
+}
