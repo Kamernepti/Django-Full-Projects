@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <link rel="stylesheet" href= "{% static 'css/new.css' %}">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create</title>
+</head>
+<body>
+    <div id ="wrapper">
+        <h1>Add Show</h1>
+        <!-- added for validation -->
+        {% if messages %}  
+        <ul class="messages">    
+            {% for message in messages %}    
+                <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>    
+            {% endfor %}
+        </ul>
+        {% endif %}
+        <div id="form">
+            <form action = "/shows/create" method="post">
+            {% csrf_token %}
+                <label for="title">Title: </label>
+                <input class="form" type = "text" name = "title">
+
+                <lable for = "network">Network: </lable>
+                <input class="form" type="text" name = "network">
+
+                <label for = "release_date">Release Date:</label>
+                <input class="form" type = "date" name="release_date" >
+
+                <label for = "desc">Description: </label>
+                <textarea class="form" name="desc"></textarea>
+
+                <button type ="submit">Create</button>
+            </form>
+            <div id = "endnav">
+                <a href="/shows">See All Shows</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

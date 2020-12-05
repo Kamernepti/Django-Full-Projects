@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <link rel="stylesheet" href= "{% static 'css/edit.css' %}">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update</title>
+</head>
+<body>
+    <div id="wrapper">
+        <h1>Edit {{show.title}}</h1>
+        {% if messages %}  
+        <ul class="messages">    
+            {% for message in messages %}    
+                <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>    
+            {% endfor %}
+        </ul>
+        {% endif %}
+        <div id = "form">
+            <form action="/shows/{{show.id}}/update" method ="post">
+            {% csrf_token %}
+                <label for = "title">Title</label>
+                <input class="form" type = "text" name = "title" placeholder="{{show.title}}">
+
+                <label for = "network">Network</label>
+                <input class="form" type = "text" name="network" placeholder="{{show.network}}">
+
+                <label for="release_date">Release Date</label>
+                <input class="form" type="date" name= "release_date" placeholder="{{show.release_date}}" pattern="(?:19|20)[0-9]{2}-(?:(?:0[1-9]|1[0-2])-(?:0[1-9]|1[0-9]|2[0-9])|(?:(?!02)(?:0[1-9]|1[0-2])-(?:30))|(?:(?:0[13578]|1[02])-31))" >
+
+                <label for ="desc">Description</label>
+                <textarea class="form"  name= "desc" placeholder="{{show.desc}}"></textarea>
+    
+                <button type ="submit" >Update</button>
+            
+        </div>
+        <div id = "endnav">
+            <a class="links" href="/shows/{{show.id}}">{{show.title}} Page</a>
+            <a href="/shows">See All Shows</a>
+        </div>
+    </div>
+</body>
+</html>

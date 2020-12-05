@@ -1,0 +1,31 @@
+#wrapper {
+    margin: 10px;
+    padding: 10px;
+}
+
+#table{
+    border-collapse: collapse;
+    margin: 10px;
+}
+
+#table > tr, th, td {
+    border: 2px solid black;
+    width: 150px;
+}
+
+#table> thead> tr > th {
+    background-color: gray;
+}
+
+#table > tbody >tr:nth-child(odd) {
+    background-color: rgb(190, 188, 188);
+} 
+
+.links {
+    border-right: 1px solid black;
+    padding-right: 5px;
+}
+
+#wrapper > a {
+    padding: 10px;
+}
