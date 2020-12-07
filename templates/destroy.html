@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <link rel="stylesheet" href = "{% static 'css/destroy.css' %}">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delete a course</title>
+</head>
+<body>
+    <div id= "wrapper">
+        <h1>Are you sure you want to delete the following course?</h1>
+        <p>Name: {{course.name}}</p>
+        <p>Description: {{course.description}} </p>
+        <div id="nobutton">
+            <form action="/" method = "get">
+                <button >No</button>
+            </form>
+        </div>
+        <div id="delbutton" >
+            <form action= "/destroy/{{course.id}}/destroycomplete" method ="post">
+            {% csrf_token %}
+                <button type="submit">Yes! I want to delete this.</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
